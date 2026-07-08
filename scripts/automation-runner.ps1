@@ -56,6 +56,7 @@ function Test-ObsidianVaultActive {
   )
 
   $normalizedVault = $ExpectedVaultPath.ToLowerInvariant()
+  $vaultName = [System.IO.Path]::GetFileName($ExpectedVaultPath).ToLowerInvariant()
 
   try {
     $processes = Get-CimInstance Win32_Process -Filter "Name = 'Obsidian.exe'" -ErrorAction Stop
@@ -74,7 +75,15 @@ function Test-ObsidianVaultActive {
     }
   }
 
-  return $processes.Count -gt 0
+  $windowedProcesses = Get-Process Obsidian -ErrorAction SilentlyContinue
+  foreach ($process in $windowedProcesses) {
+    $title = "$($process.MainWindowTitle)".ToLowerInvariant()
+    if (-not [string]::IsNullOrWhiteSpace($title) -and $title.Contains(" - $vaultName - obsidian")) {
+      return $true
+    }
+  }
+
+  return $false
 }
 
 try {
@@ -90,6 +99,7 @@ try {
       Write-AutomationLog -Context $context -Level "INFO" -Message "Obsidian activity detected. Running initial pull."
       Invoke-AutomationScript -ScriptName "auto-pull.ps1"
       Set-MarkerTime -Path $publishMarker
+      $lastPublish = Get-Date
     }
 
     if ($isActive -and ($null -eq $lastPublish -or (($now - $lastPublish).TotalMinutes -ge $PublishIntervalMinutes))) {
