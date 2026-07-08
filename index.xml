@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+      <title>jjagong blog</title>
+      <link>https://jjagong.github.io</link>
+      <description>Last 10 notes on jjagong blog</description>
+      <generator>Quartz -- quartz.jzhao.xyz</generator>
+      <item>
+    <title>태그 목록</title>
+    <link>https://jjagong.github.io/tags/</link>
+    <guid>https://jjagong.github.io/tags/</guid>
+    <description><![CDATA[  ]]></description>
+    <pubDate>Wed, 08 Jul 2026 04:45:19 GMT</pubDate>
+  </item><item>
+    <title>jjagong blog</title>
+    <link>https://jjagong.github.io/</link>
+    <guid>https://jjagong.github.io/</guid>
+    <description><![CDATA[ Obsidian으로 작성하고 GitHub Pages로 배포하는 개인 블로그 ]]></description>
+    <pubDate>Mon, 06 Jul 2026 07:28:53 GMT</pubDate>
+  </item>
+    </channel>
+  </rss>
