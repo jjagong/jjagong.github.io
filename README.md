@@ -2,6 +2,9 @@
 
 Obsidian으로 글을 쓰고 Quartz로 빌드해서 GitHub Pages에 배포하는 블로그입니다.
 
+현재 배포 방식은 GitHub Pages의 브랜치 배포를 기준으로 안정화되어 있습니다.
+즉 Quartz 결과물을 로컬에서 빌드한 뒤 저장소 루트에 반영하고, 그 상태를 `main` 브랜치에 push 하면 사이트가 갱신됩니다.
+
 ## 어디에 글을 쓰면 되나
 
 Obsidian에서는 `C:\Users\jungb\jjagong_blog\content` 폴더만 vault로 여는 것을 추천합니다.
@@ -34,8 +37,42 @@ npx quartz build --serve
 
 ## 배포
 
-이 저장소는 GitHub Pages용 GitHub Actions 워크플로를 포함합니다.
-`main` 브랜치에 push 하면 사이트가 배포되도록 설정했습니다.
+이 저장소는 Quartz 빌드 결과물을 저장소 루트에 반영한 뒤 `main` 브랜치로 push 하는 방식으로 배포합니다.
+
+가장 쉬운 방법:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\publish.ps1 -Message "새 글 추가"
+```
+
+또는 더블클릭용 파일:
+
+- `publish-blog.bat`
+- `pull-blog.bat`
+- `preview-blog.bat`
+
+위 스크립트가 자동으로 아래 순서로 처리합니다.
+
+- Quartz 빌드
+- 저장소 루트 정적 파일 갱신
+- git add
+- git commit
+- git push
+
+수동으로 하려면:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-site.ps1
+git add .
+git commit -m "Update blog"
+git push origin main
+```
+
+최신 내용을 먼저 받아오려면:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\pull.ps1
+```
 
 ## GitHub에 안 올리는 로컬 파일
 
