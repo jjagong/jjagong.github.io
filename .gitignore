@@ -8,6 +8,9 @@ tsconfig.tsbuildinfo
 .trash/
 **/.trash/
 .quartz-cache
+.automation/
+.local-node/
+logs/
 private/
 .replit
 replit.nix

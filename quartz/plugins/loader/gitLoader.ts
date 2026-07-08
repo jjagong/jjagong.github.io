@@ -310,7 +310,23 @@ function trySymlink(target: string, linkPath: string): void {
   try {
     fs.symlinkSync(target, linkPath, "dir")
   } catch (err: unknown) {
-    if ((err as NodeJS.ErrnoException).code === "EEXIST") return
+    const error = err as NodeJS.ErrnoException
+    if (error.code === "EEXIST") return
+
+    if (process.platform === "win32" && error.code === "EPERM") {
+      try {
+        fs.symlinkSync(target, linkPath, "junction")
+        return
+      } catch (junctionErr: unknown) {
+        const junctionError = junctionErr as NodeJS.ErrnoException
+        if (junctionError.code === "EEXIST") return
+
+        const resolvedTarget = path.resolve(path.dirname(linkPath), target)
+        fs.cpSync(resolvedTarget, linkPath, { recursive: true })
+        return
+      }
+    }
+
     throw err
   }
 }

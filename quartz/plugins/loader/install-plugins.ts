@@ -1,10 +1,31 @@
 #!/usr/bin/env node
 import { installPlugins, parsePluginSource } from "./gitLoader.js"
-import config from "../../../quartz.js"
+import fs from "fs"
+import path from "path"
+import yaml from "yaml"
+
+interface QuartzYamlConfig {
+  plugins?: Array<{
+    source?: string
+    enabled?: boolean
+  }>
+  externalPlugins?: string[]
+}
+
+function readQuartzYamlConfig(): QuartzYamlConfig {
+  const configPath = path.join(process.cwd(), "quartz.config.yaml")
+  const raw = fs.readFileSync(configPath, "utf-8")
+  return (yaml.parse(raw) as QuartzYamlConfig) ?? {}
+}
 
 async function main() {
-  const quartzConfig: any = config
-  const externalPlugins = quartzConfig.externalPlugins || []
+  const quartzConfig = readQuartzYamlConfig()
+  const externalPlugins = [
+    ...(quartzConfig.externalPlugins ?? []),
+    ...((quartzConfig.plugins ?? [])
+      .filter((plugin) => plugin.enabled !== false && typeof plugin.source === "string")
+      .map((plugin) => plugin.source as string)),
+  ]
 
   if (externalPlugins.length === 0) {
     console.log("No external plugins to install.")
