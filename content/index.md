@@ -1,9 +1,4 @@
 ---
 title: jjagong blog
 ---
-[[test]]
-test
-[[w]]
-[[Dreamhack]]
-
-
+- 해당 블로그는 공부한 내용을 기록하고 공유하기 위한 블로그입니다.
