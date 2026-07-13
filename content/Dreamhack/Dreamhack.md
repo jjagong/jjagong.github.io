@@ -1,2 +1,0 @@
-- Dreamhack test
-- 
