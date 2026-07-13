@@ -10,37 +10,37 @@
     <link>https://jjagong.github.io/dreamhack/</link>
     <guid>https://jjagong.github.io/dreamhack/</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Mon, 13 Jul 2026 06:17:52 GMT</pubDate>
+    <pubDate>Mon, 13 Jul 2026 06:44:41 GMT</pubDate>
   </item><item>
     <title>dreamhack</title>
     <link>https://jjagong.github.io/tags/dreamhack</link>
     <guid>https://jjagong.github.io/tags/dreamhack</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Mon, 13 Jul 2026 06:17:52 GMT</pubDate>
+    <pubDate>Mon, 13 Jul 2026 06:44:41 GMT</pubDate>
   </item><item>
     <title>web</title>
     <link>https://jjagong.github.io/tags/web</link>
     <guid>https://jjagong.github.io/tags/web</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Mon, 13 Jul 2026 06:17:52 GMT</pubDate>
+    <pubDate>Mon, 13 Jul 2026 06:44:41 GMT</pubDate>
   </item><item>
     <title>writeup</title>
     <link>https://jjagong.github.io/tags/writeup</link>
     <guid>https://jjagong.github.io/tags/writeup</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Mon, 13 Jul 2026 06:17:52 GMT</pubDate>
+    <pubDate>Mon, 13 Jul 2026 06:44:41 GMT</pubDate>
   </item><item>
     <title>태그 목록</title>
     <link>https://jjagong.github.io/tags/</link>
     <guid>https://jjagong.github.io/tags/</guid>
     <description><![CDATA[  ]]></description>
-    <pubDate>Mon, 13 Jul 2026 06:17:52 GMT</pubDate>
+    <pubDate>Mon, 13 Jul 2026 06:44:41 GMT</pubDate>
   </item><item>
     <title>phpMyRedis</title>
     <link>https://jjagong.github.io/dreamhack/phpmyredis</link>
     <guid>https://jjagong.github.io/dreamhack/phpmyredis</guid>
-    <description><![CDATA[ 1. 문제 php로 redis를 관리하는 서비스에서 취약점을 찾고 flag를 획득하는 문제이다. 2. ]]></description>
-    <pubDate>Mon, 13 Jul 2026 05:54:59 GMT</pubDate>
+    <description><![CDATA[ 1. 문제 php로 redis를 관리하는 서비스에서 취약점을 찾고 flag를 획득하는 문제이다. 2. 문제 분석 config.php 페이지에서 접근해 입력하게 되면 php에서 Redis config 확장 메서드를 사용해 요청 보낸다. ]]></description>
+    <pubDate>Mon, 13 Jul 2026 06:25:07 GMT</pubDate>
   </item><item>
     <title>jjagong blog</title>
     <link>https://jjagong.github.io/</link>
