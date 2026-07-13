@@ -40,4 +40,4 @@ if(isset($_POST['cmd'])){
 	![[Pasted image 20260713154414.png]]
 	- 현재 저장 경로 `/var/www/html`
 2. SET 요청을 통해 저장 위치를 변경한다.
-	1. 
+	- RDB를 `php`확장자로 설정해 저장하면 해당 파일에 저장된 내용이
