@@ -38,4 +38,5 @@ if(isset($_POST['cmd'])){
 # 3. 문제 풀이
 1. config 페이지에서 GET 요청으로 dir을 보내 현재 저장 경로를 조회한다.
 	![[Pasted image 20260713154414.png]]
+	- 현재 저장 경로 `/var/www/html`
 2. 
