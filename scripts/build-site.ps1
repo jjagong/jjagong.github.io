@@ -16,6 +16,8 @@ if ($portableNode) {
 Write-Host "[1/4] Building Quartz output..."
 npx quartz build
 
+$publicRoot = Join-Path $repoRoot "public"
+
 $generatedRootPaths = @(
   ".nojekyll",
   "404.html",
@@ -23,10 +25,15 @@ $generatedRootPaths = @(
   "favicon.ico",
   "index.html",
   "index.xml",
-  "sitemap.xml",
-  "static",
-  "tags"
+  "sitemap.xml"
 )
+
+# Also remove every current top-level artifact that Quartz emitted last build
+# so old folders like `assets/` or `dreamhack/` don't get nested on copy.
+$generatedRootPaths += Get-ChildItem -Path $publicRoot -Force -ErrorAction SilentlyContinue |
+  ForEach-Object { $_.Name }
+
+$generatedRootPaths = $generatedRootPaths | Sort-Object -Unique
 
 $generatedPatterns = @(
   "component-*.css",
